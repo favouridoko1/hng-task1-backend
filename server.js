@@ -2,7 +2,7 @@ const express = require('express');
 const dotenv = require('dotenv').config();
 const app = express();
 const port = process.env.PORT || 3000;
-const apiKey = process.env.apiKey ;
+const apiKey = process.env.apiKey || '03cc86fbf31147b0b7a83849231910';
 
    // const tempResponse = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${geoData.latitude}&lon=${geoData.longitude}&appid=${apiKey}`);
         // const tempData = await tempResponse.json();
@@ -18,7 +18,7 @@ app.get('/', async(req, res)=> {
 
 app.get('/api/hello', async(req, res)=> {
     const client_ip = req.headers['x-forwarded-for'] ? req.headers['x-forwarded-for'].split(',')[0].trim() : req.socket.remoteAddress;
-        const geoResponse = await fetch(`https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${client_ip}`);
+        const geoResponse = await fetch(`https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=Nigeria`);
         const geoData = await geoResponse.json();
         // console.log(geoData);
         console.log(geoData.location.name);
