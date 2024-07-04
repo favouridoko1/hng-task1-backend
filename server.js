@@ -1,8 +1,8 @@
 const express = require('express');
 const dotenv = require('dotenv').config();
 const app = express();
-const port =3000;
-const apiKey = apiKey='10f0189ad36029e25044ceb244a6422f';
+const port = process.env.PORT || 3000;
+const apiKey = process.env.apiKey;
 
 app.get('/', async(req, res)=> {
     res.status(200).json({ success: true, message:`Welcome to user geographical condition app` });
