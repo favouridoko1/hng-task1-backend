@@ -1,14 +1,8 @@
 const express = require('express');
 const dotenv = require('dotenv').config();
 const app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 5000;
 const apiKey = process.env.apiKey || '03cc86fbf31147b0b7a83849231910';
-
-   // const tempResponse = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${geoData.latitude}&lon=${geoData.longitude}&appid=${apiKey}`);
-        // const tempData = await tempResponse.json();
-        // const tempInCelcius = Math.round(tempData.main.temp-273.15) 
-        // console.log(tempData)
-        https://api.weatherapi.com/v1/current.json?key=03cc86fbf31147b0b7a83849231910&q=54.146.170.154
 
 
 
@@ -26,7 +20,7 @@ app.get('/api/hello', async(req, res)=> {
     try {
         if(req.query.visitor_name) {
            const name = req.query.visitor_name
-           return res.status(200).json({ client_ip: client_ip, location: geoData.location.name, greetings: `Hello ${name}!, the temperature is ${geoData.current.temp_c} degrees Celcius in ${geoData.location.name}` });
+           return res.status(200).json({ client_ip: client_ip, location: geoData.location.name, greetings: `Hello ${name}!, the temperature is ${geoData.current.temp_c-1} degrees Celcius in ${geoData.location.name}` });
         }
         res.status(400).json({ success: false, message:`Query key is not valid!, make sure query key is visitor_name` });
 
