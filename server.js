@@ -18,7 +18,7 @@ app.get('/', async(req, res)=> {
 
 app.get('/api/hello', async(req, res)=> {
     const client_ip = req.headers['x-forwarded-for'] ? req.headers['x-forwarded-for'].split(',')[0].trim() : req.socket.remoteAddress;
-        const geoResponse = await fetch(`https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=Nigeria`);
+        const geoResponse = await fetch(`https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${client_ip}`);
         const geoData = await geoResponse.json();
         // console.log(geoData);
         console.log(geoData.location.name);
